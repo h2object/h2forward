@@ -85,13 +85,13 @@ func (app *Application) Init() error {
 	}
 	app.vhosts = vhosts
 
-	forwarder, err := forward.New()
+	forwarder, err := forward.New(forward.Logger(app.Logger))
 	if err != nil {
 		return err
 	}
 	app.forwarder = forwarder
 
-	reverser, err := reverse.New(app.forwarder, reverse.Route(app.vhosts))
+	reverser, err := reverse.New(app.forwarder, reverse.Route(app.vhosts), reverse.Logger(app.Logger))
 	if err != nil {
 		return err
 	}

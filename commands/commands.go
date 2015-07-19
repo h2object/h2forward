@@ -62,6 +62,33 @@ func App() *cli.App {
 						stopCommand(ctx)	
 					},
 		},
+		{
+			Name:  "virtualhost",
+			Usage: "virtualhost operate command",
+			Subcommands: []cli.Command{
+				{
+					Name:  "get",
+					Usage: "get virtualhost setting by hostname",
+					Action: func(ctx *cli.Context) {
+						vhostGetCommand(ctx)	
+					},
+				},
+				{
+					Name:  "set",
+					Usage: "set virtualhost setting by hostname",
+					Action: func(ctx *cli.Context) {
+						vhostSetCommand(ctx)
+					},
+				},
+				{
+					Name:  "del",
+					Usage: "del virtualhost setting by hostname",
+					Action: func(ctx *cli.Context) {
+						vhostDelCommand(ctx)
+					},
+				},
+			},
+		},
 	}
 
 	return app
