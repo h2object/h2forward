@@ -50,4 +50,4 @@ $: h2forward -a="127.0.0.1:9000" virtualhost get
 $: h2forward -a="127.0.0.1:9000" virtualhost get "www.example.com"
 ````
 
-## Enjoin It!
+## Enjoy It!
