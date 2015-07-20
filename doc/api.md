@@ -6,23 +6,23 @@ h2forward api definitions:
 -	get all forwards
 
 	method: get
-	uri:	/forward/list
+	uri:	/virtualhost.json?host=
 
-	data:
-			host:url
 
 -	add a new forward
 
-	method: post
-	uri:    /forward/new
+	method: put
+	uri:    /virtualhost.json
 
 	data:
-			host:url
+			{
+				"host":"www.example.com",
+				"url":"http://127.0.0.1:8080"
+			}
 				
 -	del an old forward
 
 	method: delete
-	uri: 	/forward/:host
+	uri: 	/virtualhost.json?host=
 
-second, should implement the rate limit control for the client accesses.
 
