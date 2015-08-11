@@ -245,6 +245,10 @@ func stripQuotes(s string) string {
 func (c *CONFIG) Save(fn string) error {
 	c.Lock()
 	defer c.Unlock()
+	if c.filename == "" {
+		c.filename = fn
+	}
+
 	savefile := fn
 	if fn == "" {
 		savefile = c.filename
@@ -254,6 +258,7 @@ func (c *CONFIG) Save(fn string) error {
 	if err := c.config.WriteFile(tmp, 0644, default_comment); err != nil {
 		return err
 	}
+
 	os.Remove(savefile)
 	return os.Rename(tmp, savefile)
 }
